@@ -52,11 +52,11 @@ passport.use('local', new localStrategy({
           if(isMatch) {
             // all good, populate user object on the session through serializeUser
             console.log('userStrategy.js :: all good');
-            return(done(null, user));
+            return (done(null, user)); // goes to serializeUser() above
           } else {
             // no good.
             console.log('userStrategy.js :: password incorrect');
-            done(null, false, {message: 'Incorrect credentials.'});
+            done(null, false, {message: 'Incorrect credentials.'}); // effectivey responds with a 403 status code
           }
         });
       } // end else
