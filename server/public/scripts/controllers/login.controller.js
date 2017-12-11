@@ -1,18 +1,18 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
     console.log('LoginController created');
-    var vm = this;
-    vm.user = {
+    var self = this;
+    self.user = {
       username: '',
       password: ''
     };
-    vm.message = '';
+    self.message = '';
 
-    vm.login = function() {
-      if(vm.user.username === '' || vm.user.password === '') {
-        vm.message = "Enter your username and password!";
+    self.login = function() {
+      if(self.user.username === '' || self.user.password === '') {
+        self.message = "Enter your username and password!";
       } else {
-        console.log('sending to server...', vm.user);
-        $http.post('/', vm.user).then(
+        console.log('sending to server...', self.user);
+        $http.post('/', self.user).then(
         function(response) {
           if(response.status == 200) {
             console.log('success: ', response.data);
@@ -20,28 +20,28 @@ myApp.controller('LoginController', function($http, $location, UserService) {
             $location.path('/user');
           } else {
             console.log('failure error: ', response);
-            vm.message = "Wrong!!";
+            self.message = "The password was not correct.";
           }
         },
         function(response) {
           console.log('failure error: ', response);
-          vm.message = "Wrong!!";
+          self.message = "The password was not correct.";
         });
       }
     };
 
-    vm.registerUser = function() {
-      if(vm.user.username === '' || vm.user.password === '') {
-        vm.message = "Choose a username and password!";
+    self.registerUser = function() {
+      if(self.user.username === '' || self.user.password === '') {
+        self.message = "Choose a username and password!";
       } else {
-        console.log('sending to server...', vm.user);
-        $http.post('/register', vm.user).then(function(response) {
+        console.log('sending to server...', self.user);
+        $http.post('/register', self.user).then(function(response) {
           console.log('success');
           $location.path('/home');
         },
         function(response) {
           console.log('error');
-          vm.message = "Please try again."
+          self.message = "Please try again."
         });
       }
     }
