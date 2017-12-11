@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
 /// Routes ///
-myApp.config(function ($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       redirectTo: 'home'
@@ -35,4 +35,4 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .otherwise({
       template: '<h1>404</h1>'
     });
-});
+}]);

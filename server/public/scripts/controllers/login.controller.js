@@ -1,4 +1,4 @@
-myApp.controller('LoginController', function($http, $location, UserService) {
+myApp.controller('LoginController', ['$http', '$location', 'UserService', function($http, $location, UserService) {
     console.log('LoginController created');
     var self = this;
     self.user = {
@@ -45,4 +45,4 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
-});
+}]);
