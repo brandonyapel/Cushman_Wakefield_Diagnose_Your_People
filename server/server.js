@@ -18,8 +18,8 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json()); // parses angular data
+app.use(bodyParser.urlencoded({extended: true})); // parses jQuery data
 
 // Serve back static files
 app.use(express.static('./server/public'));
@@ -30,7 +30,7 @@ app.use(session({
    key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
    resave: 'true',
    saveUninitialized: false,
-   cookie: { maxage: 60000, secure: false } // this session expires after 600 seconds without an interaction
+   cookie: { maxage: 600000, secure: false } // this session expires after 600 seconds (10 minutes) without an interaction
 }));
 
 // start up passport sessions
