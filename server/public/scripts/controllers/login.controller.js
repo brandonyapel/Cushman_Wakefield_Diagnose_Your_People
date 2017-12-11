@@ -12,7 +12,7 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
         self.message = "Enter your username and password!";
       } else {
         console.log('sending to server...', self.user);
-        $http.post('/', self.user).then(
+        $http.post('/authenticate', self.user).then(
         function(response) {
           if(response.status == 200) {
             console.log('success: ', response.data);

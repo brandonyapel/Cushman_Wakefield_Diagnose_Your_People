@@ -9,7 +9,7 @@ require('./modules/database');
 var passport = require('./strategies/userStrategy');
 
 // Route includes
-var index = require('./routes/index');
+var authenticate = require('./routes/authenticate');
 var user = require('./routes/user');
 var register = require('./routes/register');
 
@@ -26,7 +26,7 @@ app.use(express.static('./server/public'));
 
 // Passport Session Configuration //
 app.use(session({
-   secret: 'secret',
+   secret: 'secret', // this is a property that is used to uniquely differentiate our app. 'secret' isn't very good. Something like ag;uatw3982398afiuoihr8yr289r28ra would be better
    key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
    resave: 'true',
    saveUninitialized: false,
@@ -47,7 +47,7 @@ app.use('/loginFailure', function(req, res) {
 });
 
 // handles login/registration post request
-app.use('/', index);
+app.use('/authenticate', authenticate);
 
 /** Listen **/
 app.listen(port, function(){
