@@ -2,9 +2,10 @@ var myApp = angular.module('myApp', ['ngRoute']);
 
 /// Routes ///
 myApp.config(function ($routeProvider, $locationProvider) {
-  $locationProvider.hashPrefix('');
-
   $routeProvider
+    .when('/', {
+      redirectTo: 'home'
+    })
     .when('/home', {
       templateUrl: '/views/templates/home.html',
       controller: 'LoginController as lc',
@@ -32,6 +33,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
       }
     })
     .otherwise({
-      redirectTo: 'home'
+      template: '<h1>404</h1>'
     });
 });
