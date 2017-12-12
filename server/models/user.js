@@ -26,7 +26,7 @@ UserSchema.pre('save', function(next) {
             if(err) {
               return next(err);
             }
-            //IF WE WERE TO CONSOLE LOG RIGHT MEOW, user.password would be the original plain text password
+            //IF WE WERE TO CONSOLE LOG RIGHT NOW, user.password would be the original plain text password
             user.password = hash;
             next();
         });

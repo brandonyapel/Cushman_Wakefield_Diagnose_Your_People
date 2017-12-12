@@ -21,5 +21,5 @@ mongoose.connection.on('error', function(err){
 });
 
 mongoose.connection.once('open', function(){
-   console.log("Connected to Mongo, meow!");
+   console.log("Connected to Mongo!");
 });
